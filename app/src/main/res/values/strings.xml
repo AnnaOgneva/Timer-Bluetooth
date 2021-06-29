@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Timer Bluetooth </string>
+    <string name="button_off">Start timer</string>
+    <string name="button_on">Stop timer</string>
+    <string name="text">Select shutdown time:</string>
+    <string name="default_tetxtimer">00:00:00</string>
+    <string name="text_add_time">+01:00</string>
+    <string name="start_btn">start</string>
+    <string name="stop_btn">stop</string>
+    <string name="pause_btn">pause</string>
+    <string name="notif_channel_name">Timer notifications</string>
+    <string name="notif_title_inprocess">Left until shutdown:</string>
+    <string name="notif_title_finishing">Shutdown bluetooth...</string>
+</resources>
