@@ -22,13 +22,10 @@ import android.widget.ToggleButton;
 
 public class MainActivity extends AppCompatActivity {
 
-    String[] spinner_items;
     long[] spinner_values;
-   // boolean needToRestart = true;
 
-   // ToggleButton  timer_button;
     ImageView timer_ring;
-    Button pause_btn, start_btn, stop_btn;
+    ImageButton pause_btn, start_btn, stop_btn;
     Spinner set_time;
     TextView textView_timer, textView_add_time;
     CountDownTimer countDownTimerOnButton;
@@ -38,14 +35,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //spinner_items = getResources().getStringArray(R.array.spinner_items);
+
         spinner_values = new long[]{15, 600, 1800, 3600, 5400, 7200};
         SharedPreferencesManager.editMinLatency(this, spinner_values[0]);
         SharedPreferencesManager.editOverrideDeadline(this, spinner_values[0] + 2);
 
-        //createTimerButton();
-        //Log.d("myLogs", TimeToText.convert(3725));
-        //EditText texted = findViewById(R.id.edit_time);
         createManageButtons();
         createSpinner();
         createTextTimer();
@@ -87,12 +81,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        //if(SharedPreferencesManager.getTimeLeft(this) != -1 && )
         super.onDestroy();
     }
 
     public void createManageButtons() {
-        pause_btn = (Button) findViewById(R.id.pause_btn);
+        pause_btn = (ImageButton) findViewById(R.id.pause_btn);
         pause_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        start_btn =  (Button) findViewById(R.id.start_btn);
+        start_btn = (ImageButton) findViewById(R.id.start_btn);
         start_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        stop_btn = (Button) findViewById(R.id.stop_btn);
+        stop_btn = (ImageButton) findViewById(R.id.stop_btn);
         stop_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -127,37 +120,11 @@ public class MainActivity extends AppCompatActivity {
                     DisableBluetoothScheduler.stopJob(getBaseContext());
                     TimerNotification.stopTimerNotification(getBaseContext());
                     if(countDownTimerOnButton != null) {countDownTimerOnButton.cancel();}
-                    //SharedPreferencesManager.editTimeLeft(getBaseContext(), -1);
                     updateTextTimer(0, false);
                 }
             }
         });
     }
-//    public void createTimerButton() {
-//        timer_button = findViewById(R.id.timer_button);
-//        timer_button.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                       if (buttonView.isChecked()) {
-//                           if(!DisableBluetoothScheduler.isJobInQueue(getBaseContext())) {
-//                               long timeLeft = SharedPreferencesManager.getTimeLeft(getBaseContext());
-//                               if(timeLeft == -1) {timeLeft = SharedPreferencesManager.getMinLatency(getBaseContext());}
-//                               DisableBluetoothScheduler.scheduleJob(getBaseContext(), timeLeft);
-//                               TimerNotification.startTimerNotification(getBaseContext(), timeLeft);
-//                               startTextTimer(timeLeft);
-//                           }
-//                       } else {
-//                           DisableBluetoothScheduler.stopJob(getBaseContext());
-//                           TimerNotification.stopTimerNotification(getBaseContext());
-//                           countDownTimerOnButton.cancel();
-//                           //SharedPreferencesManager.editTimeLeft(getBaseContext(), -1);
-//                           updateTextTimer(0, false);
-//                       }
-//                  // }
-//            }
-//        });
-//        updateTimerButton();
-//    }
 
     public void createSpinner() {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,  getResources().getStringArray(R.array.spinner_items));
@@ -192,7 +159,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void updateTimerButton() {
         boolean isJobInQueue = DisableBluetoothScheduler.isJobInQueue(this);
-        //timer_button.setChecked(isJobInQueue);
     }
 
     public void updateTextTimer(long timeLeft, boolean isRunning) {
@@ -211,13 +177,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTick(long millisUntilFinished) {
                 updateTextTimer(millisUntilFinished / 1000, true);
-//                SharedPreferencesManager.editTimeLeft(getBaseContext(), millisUntilFinished / 1000);
             }
 
             @Override
             public void onFinish() {
                 updateTextTimer(0, false);
-//                SharedPreferencesManager.editTimeLeft(getBaseContext(), -1);
             }
         }.start();
     }
@@ -233,18 +197,27 @@ public class MainActivity extends AppCompatActivity {
     public void updateUI() {
         boolean isJobIQueue = DisableBluetoothScheduler.isJobInQueue(this);
         if(isJobIQueue) {
-            timer_ring.setImageResource(R.drawable.ic_circle_l);
+            timer_ring.setColorFilter(getResources().getColor(R.color.Blue_300));
             textView_timer.setTextColor(getResources().getColor(R.color.Blue_300));
             textView_add_time.setTextColor(getResources().getColor(R.color.Blue_300));
+            start_btn.setColorFilter(getResources().getColor(R.color.Blue_300));
+           //stop_btn.setColorFilter(getResources().getColor(R.color.Gray_500));
+            pause_btn.setColorFilter(getResources().getColor(R.color.Gray_500));
 
         } else if (!isJobIQueue && SharedPreferencesManager.getTimeLeft(this) != -1){     //pause
             timer_ring.setImageResource(R.drawable.ic_circle_l);
             textView_timer.setTextColor(getResources().getColor(R.color.Gray_500));
             textView_add_time.setTextColor(getResources().getColor(R.color.Gray_500));
+            start_btn.setColorFilter(getResources().getColor(R.color.Gray_500));
+            pause_btn.setColorFilter(getResources().getColor(R.color.Blue_300));
+            //stop_btn.setColorFilter(getResources().getColor(R.color.Gray_500));
         } else {
             timer_ring.setImageResource(R.drawable.ic_circle);
             textView_timer.setTextColor(getResources().getColor(R.color.Gray_500));
             textView_add_time.setTextColor(getResources().getColor(R.color.Gray_500));
+            start_btn.setColorFilter(getResources().getColor(R.color.Gray_500));
+            //stop_btn.setColorFilter(getResources().getColor(R.color.Gray_500));
+            pause_btn.setColorFilter(getResources().getColor(R.color.Gray_500));
         }
     }
 

@@ -5,42 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/pause_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/pause_btn"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/start_btn"
-        app:layout_constraintHorizontal_bias="0.476"
-        app:layout_constraintStart_toEndOf="@+id/stop_btn"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.289" />
-
-    <Button
-        android:id="@+id/start_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
-        android:text="@string/start_btn"
-        android:textColorHighlight="#FFFFFF"
-        android:textColorLink="#528bcc"
-        app:layout_constraintBottom_toBottomOf="@+id/pause_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/pause_btn"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/stop_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="@string/stop_btn"
-        app:layout_constraintBottom_toBottomOf="@+id/pause_btn"
-        app:layout_constraintStart_toEndOf="@+id/timer_ring"
-        app:layout_constraintTop_toTopOf="@+id/pause_btn"
-        app:layout_constraintVertical_bias="0.0" />
-
     <Spinner
         android:id="@+id/set_time"
         android:layout_width="173dp"
@@ -55,13 +19,13 @@
         android:id="@+id/textView"
         android:layout_width="281dp"
         android:layout_height="24dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="sans-serif-medium"
         android:gravity="center"
         android:text="@string/text"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/start_btn"
-        app:layout_constraintHorizontal_bias="0.448"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/stop_btn"
         app:layout_constraintTop_toBottomOf="@+id/pause_btn" />
 
@@ -75,23 +39,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.26"
-        app:srcCompat="@drawable/ic_circle" />
+        app:srcCompat="@drawable/ic_circle_test" />
 
     <TextView
         android:id="@+id/text_timer"
-        android:layout_width="169dp"
-        android:layout_height="51dp"
+        android:layout_width="183dp"
+        android:layout_height="58dp"
         android:fontFamily="sans-serif-medium"
         android:gravity="center"
         android:text="@string/default_tetxtimer"
         android:textColor="@color/Gray_500"
         android:textIsSelectable="false"
-        android:textSize="33sp"
+        android:textSize="45sp"
         app:layout_constraintBottom_toBottomOf="@+id/timer_ring"
         app:layout_constraintEnd_toEndOf="@+id/timer_ring"
+        app:layout_constraintHorizontal_bias="0.563"
         app:layout_constraintStart_toStartOf="@+id/timer_ring"
         app:layout_constraintTop_toTopOf="@+id/timer_ring"
-        app:layout_constraintVertical_bias="0.472" />
+        app:layout_constraintVertical_bias="0.459" />
 
     <TextView
         android:id="@+id/text_add_time"
@@ -100,12 +65,43 @@
         android:fontFamily="sans-serif-medium"
         android:text="@string/text_add_time"
         android:textColor="@color/Gray_500"
-        android:textSize="20sp"
+        android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="@+id/timer_ring"
         app:layout_constraintEnd_toEndOf="@+id/text_timer"
         app:layout_constraintHorizontal_bias="0.78"
         app:layout_constraintStart_toStartOf="@+id/text_timer"
         app:layout_constraintTop_toBottomOf="@+id/text_timer"
         app:layout_constraintVertical_bias="0.168" />
+
+    <ImageButton
+        android:id="@+id/stop_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="60dp"
+        android:backgroundTint="#00FFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/timer_ring"
+        app:layout_constraintTop_toTopOf="@+id/timer_ring"
+        app:srcCompat="@drawable/ic_stop_btn" />
+
+    <ImageButton
+        android:id="@+id/pause_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:backgroundTint="#00FFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/stop_btn"
+        app:layout_constraintTop_toTopOf="@+id/stop_btn"
+        app:srcCompat="@drawable/ic_pause_btn" />
+
+    <ImageButton
+        android:id="@+id/start_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:backgroundTint="#00FFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/pause_btn"
+        app:layout_constraintTop_toTopOf="@+id/pause_btn"
+        app:srcCompat="@drawable/ic_play_btn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
