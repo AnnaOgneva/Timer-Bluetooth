@@ -11,4 +11,6 @@
     <string name="notif_channel_name">Timer notifications</string>
     <string name="notif_title_inprocess">Left until shutdown:</string>
     <string name="notif_title_finishing">Shutdown bluetooth...</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

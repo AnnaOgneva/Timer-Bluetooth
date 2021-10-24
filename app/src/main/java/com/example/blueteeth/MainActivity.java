@@ -51,15 +51,15 @@ public class MainActivity extends AppCompatActivity {
         textView_add_time.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               if(DisableBluetoothScheduler.isJobInQueue(getBaseContext())) {
-                   TimerNotification.stopTimerNotification(getBaseContext());
-                   DisableBluetoothScheduler.pauseJob(getBaseContext());
-                   countDownTimerOnButton.cancel();
-                   long timeLeft = SharedPreferencesManager.getTimeLeft(getBaseContext()) + 60;
-                   DisableBluetoothScheduler.scheduleJob(getBaseContext(), timeLeft);
-                   TimerNotification.startTimerNotification(getBaseContext(), timeLeft);
-                   startTextTimer(timeLeft);
-               }
+                if(DisableBluetoothScheduler.isJobInQueue(getBaseContext())) {
+                    TimerNotification.stopTimerNotification(getBaseContext());
+                    DisableBluetoothScheduler.pauseJob(getBaseContext());
+                    countDownTimerOnButton.cancel();
+                    long timeLeft = SharedPreferencesManager.getTimeLeft(getBaseContext()) + 60;
+                    DisableBluetoothScheduler.scheduleJob(getBaseContext(), timeLeft);
+                    TimerNotification.startTimerNotification(getBaseContext(), timeLeft);
+                    startTextTimer(timeLeft);
+                }
             }
         });
 
@@ -68,8 +68,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-       handler.removeCallbacks(uiUpdaterRunnable);
-       handler.postDelayed(uiUpdaterRunnable, 100);
+        handler.removeCallbacks(uiUpdaterRunnable);
+        handler.postDelayed(uiUpdaterRunnable, 100);
         super.onResume();
     }
 
@@ -197,11 +197,13 @@ public class MainActivity extends AppCompatActivity {
     public void updateUI() {
         boolean isJobIQueue = DisableBluetoothScheduler.isJobInQueue(this);
         if(isJobIQueue) {
-            timer_ring.setColorFilter(getResources().getColor(R.color.Blue_300));
+            //timer_ring.setColorFilter(getResources().getColor(R.color.Blue_300));
+            //timer_ring.setImageDrawable(getResources().getDrawable(R.drawable.ic_circle));
+            timer_ring.setImageResource(R.drawable.ic_circle_l);
             textView_timer.setTextColor(getResources().getColor(R.color.Blue_300));
             textView_add_time.setTextColor(getResources().getColor(R.color.Blue_300));
             start_btn.setColorFilter(getResources().getColor(R.color.Blue_300));
-           //stop_btn.setColorFilter(getResources().getColor(R.color.Gray_500));
+            //stop_btn.setColorFilter(getResources().getColor(R.color.Gray_500));
             pause_btn.setColorFilter(getResources().getColor(R.color.Gray_500));
 
         } else if (!isJobIQueue && SharedPreferencesManager.getTimeLeft(this) != -1){     //pause
@@ -213,6 +215,7 @@ public class MainActivity extends AppCompatActivity {
             //stop_btn.setColorFilter(getResources().getColor(R.color.Gray_500));
         } else {
             timer_ring.setImageResource(R.drawable.ic_circle);
+            Log.d("myLogs", "stop done");
             textView_timer.setTextColor(getResources().getColor(R.color.Gray_500));
             textView_add_time.setTextColor(getResources().getColor(R.color.Gray_500));
             start_btn.setColorFilter(getResources().getColor(R.color.Gray_500));

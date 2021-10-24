@@ -12,7 +12,7 @@ public class SharedPreferencesManager {
     private static final String IS_ON_PAUSE ="is_on_pause";
 
 
-//    public static boolean getTimerState(Context ctx) {
+    //    public static boolean getTimerState(Context ctx) {
 //        SharedPreferences sharedPreferences = ctx.getSharedPreferences("DisableBluetoothTimer", Context.MODE_PRIVATE);
 //        return sharedPreferences.getBoolean(TIMER_IS_ON, false);
 //    }
@@ -24,7 +24,7 @@ public class SharedPreferencesManager {
         SharedPreferences sharedPreferences = ctx.getSharedPreferences("DisableBluetoothTimer", Context.MODE_PRIVATE);
         return sharedPreferences.getBoolean(IS_ON_PAUSE, false);
     }
-//    public static long getOverrideDeadline(Context ctx) {
+    //    public static long getOverrideDeadline(Context ctx) {
 //        SharedPreferences sharedPreferences = ctx.getSharedPreferences("DisableBluetoothTimer", Context.MODE_PRIVATE);
 //        return sharedPreferences.getLong(OVERRIDE_DEADLINE_KEY, 0);
 //    }
@@ -36,7 +36,7 @@ public class SharedPreferencesManager {
         SharedPreferences sharedPreferences = ctx.getSharedPreferences("DisableBluetoothTimer", Context.MODE_PRIVATE);
         return sharedPreferences.getLong(TIME_LEFT, -1);
     }
-//    public static void editTimerState(Context ctx, boolean flag) {
+    //    public static void editTimerState(Context ctx, boolean flag) {
 //        SharedPreferences sharedPreferences = ctx.getSharedPreferences("DisableBluetoothTimer", Context.MODE_PRIVATE);
 //        sharedPreferences.edit().putBoolean(TIMER_IS_ON, flag).apply();
 //    }
