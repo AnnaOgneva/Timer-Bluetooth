@@ -38,7 +38,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.145"
-        app:srcCompat="@drawable/ic_circle" />
+        app:srcCompat="@drawable/ic_ring" />
 
     <TextView
         android:id="@+id/text_timer"
@@ -72,36 +72,38 @@
         app:layout_constraintTop_toBottomOf="@+id/text_timer"
         app:layout_constraintVertical_bias="0.013" />
 
-    <Button
+
+    <ImageButton
+        android:id="@+id/stop_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/pause_btn"
+        app:layout_constraintStart_toStartOf="@+id/timer_ring"
+        app:layout_constraintTop_toTopOf="@+id/pause_btn"
+        app:srcCompat="@drawable/ic_stop_btn" />
+
+    <ImageButton
         android:id="@+id/pause_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/pause_btn"
+        android:backgroundTint="#00FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/start_btn"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toEndOf="@+id/stop_btn"
         app:layout_constraintTop_toBottomOf="@+id/timer_ring"
-        app:layout_constraintVertical_bias="0.123" />
+        app:layout_constraintVertical_bias="0.123"
+        app:srcCompat="@drawable/ic_pause_btn" />
 
-    <Button
-        android:id="@+id/stop_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/stop_btn"
-        app:layout_constraintBottom_toBottomOf="@+id/pause_btn"
-        app:layout_constraintStart_toStartOf="@+id/timer_ring"
-        app:layout_constraintTop_toTopOf="@+id/pause_btn" />
-
-    <Button
+    <ImageButton
         android:id="@+id/start_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/start_btn"
-        android:textColorHighlight="#FFFFFF"
-        android:textColorLink="#528bcc"
+        android:backgroundTint="#00FFFFFF"
         app:layout_constraintBottom_toBottomOf="@+id/pause_btn"
         app:layout_constraintEnd_toEndOf="@+id/timer_ring"
-        app:layout_constraintTop_toTopOf="@+id/pause_btn" />
+        app:layout_constraintTop_toTopOf="@+id/pause_btn"
+        app:srcCompat="@drawable/ic_start_btn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

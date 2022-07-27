@@ -11,13 +11,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.ToggleButton;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -28,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
    // ToggleButton  timer_button;
     ImageView timer_ring;
-    Button pause_btn, start_btn, stop_btn;
+    ImageButton pause_btn, start_btn, stop_btn;
     Spinner set_time;
     TextView textView_timer, textView_add_time;
     CountDownTimer countDownTimerOnButton;
@@ -92,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void createManageButtons() {
-        pause_btn = (Button) findViewById(R.id.pause_btn);
+        pause_btn = (ImageButton) findViewById(R.id.pause_btn);
         pause_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        start_btn =  (Button) findViewById(R.id.start_btn);
+        start_btn =  (ImageButton) findViewById(R.id.start_btn);
         start_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        stop_btn = (Button) findViewById(R.id.stop_btn);
+        stop_btn = (ImageButton) findViewById(R.id.stop_btn);
         stop_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -233,16 +230,25 @@ public class MainActivity extends AppCompatActivity {
     public void updateUI() {
         boolean isJobIQueue = DisableBluetoothScheduler.isJobInQueue(this);
         if(isJobIQueue) {
-            timer_ring.setImageResource(R.drawable.ic_circle_l);
+            timer_ring.setImageResource(R.drawable.ic_ring_l);
+            start_btn.setImageResource(R.drawable.ic_start_btn_l);
+            pause_btn.setImageResource(R.drawable.ic_pause_btn);
+            stop_btn.setImageResource(R.drawable.ic_stop_btn);
             textView_timer.setTextColor(getResources().getColor(R.color.Blue_300));
             textView_add_time.setTextColor(getResources().getColor(R.color.Blue_300));
 
         } else if (!isJobIQueue && SharedPreferencesManager.getTimeLeft(this) != -1){     //pause
-            timer_ring.setImageResource(R.drawable.ic_circle_l);
+            timer_ring.setImageResource(R.drawable.ic_ring_l);
+            start_btn.setImageResource(R.drawable.ic_start_btn);
+            pause_btn.setImageResource(R.drawable.ic_pause_btn_l);
+            stop_btn.setImageResource(R.drawable.ic_stop_btn);
             textView_timer.setTextColor(getResources().getColor(R.color.Gray_500));
             textView_add_time.setTextColor(getResources().getColor(R.color.Gray_500));
         } else {
-            timer_ring.setImageResource(R.drawable.ic_circle);
+            timer_ring.setImageResource(R.drawable.ic_ring);
+            start_btn.setImageResource(R.drawable.ic_start_btn);
+            pause_btn.setImageResource(R.drawable.ic_pause_btn);
+            stop_btn.setImageResource(R.drawable.ic_stop_btn);
             textView_timer.setTextColor(getResources().getColor(R.color.Gray_500));
             textView_add_time.setTextColor(getResources().getColor(R.color.Gray_500));
         }

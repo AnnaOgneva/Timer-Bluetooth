@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
+    <ImageButton
         android:id="@+id/pause_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,9 +15,11 @@
         app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toEndOf="@+id/stop_btn"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.289" />
+        app:layout_constraintVertical_bias="0.289"
+        app:srcCompat="@drawable/ic_pause_btn"
+        android:backgroundTint="#00FFFFFF"/>
 
-    <Button
+    <ImageButton
         android:id="@+id/start_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,18 +30,21 @@
         app:layout_constraintBottom_toBottomOf="@+id/pause_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/pause_btn"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_start_btn"
+        android:backgroundTint="#00FFFFFF"/>
 
-    <Button
+    <ImageButton
         android:id="@+id/stop_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="@string/stop_btn"
         app:layout_constraintBottom_toBottomOf="@+id/pause_btn"
         app:layout_constraintStart_toEndOf="@+id/timer_ring"
         app:layout_constraintTop_toTopOf="@+id/pause_btn"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_stop_btn"
+        android:backgroundTint="#00FFFFFF"/>
 
     <Spinner
         android:id="@+id/set_time"
