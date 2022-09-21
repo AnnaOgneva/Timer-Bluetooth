@@ -22,26 +22,20 @@ public class DisableBluetoothScheduler {
         exerciseJobBuilder.setMinimumLatency(TimeUnit.SECONDS.toMillis(timeLeft));
         exerciseJobBuilder.setOverrideDeadline(TimeUnit.SECONDS.toMillis(timeLeft));
 
-//        exerciseJobBuilder.setMinimumLatency(TimeUnit.SECONDS.toMillis(15));
-//        exerciseJobBuilder.setOverrideDeadline(TimeUnit.SECONDS.toMillis(15));
 
         JobScheduler jobScheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
         jobScheduler.schedule(exerciseJobBuilder.build());
-       // SharedPreferencesManager.editIsOnPause(context, false);
         SharedPreferencesManager.editStartTime(context, (System.currentTimeMillis() / 1000));
     }
 
     public static void pauseJob(Context context) {
         JobScheduler jobScheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
         jobScheduler.cancel(JOB_ID);
-       // SharedPreferencesManager.editIsOnPause(context, true);
     }
 
     public static void stopJob(Context context) {
         JobScheduler jobScheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
         jobScheduler.cancel(JOB_ID);
-       // SharedPreferencesManager.editIsOnPause(context, false);
-        //SharedPreferencesManager.editTimeLeft(context, -1);
     }
 
     public static boolean isJobInQueue(Context context) {
