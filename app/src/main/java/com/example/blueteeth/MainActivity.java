@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        //if(SharedPreferencesManager.getTimeLeft(this) != -1 && )
+        //if(SharedPreferencesManager.getTimeLeft(this) != -1 )
         super.onDestroy();
     }
 
@@ -130,31 +130,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-//    public void createTimerButton() {
-//        timer_button = findViewById(R.id.timer_button);
-//        timer_button.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                       if (buttonView.isChecked()) {
-//                           if(!DisableBluetoothScheduler.isJobInQueue(getBaseContext())) {
-//                               long timeLeft = SharedPreferencesManager.getTimeLeft(getBaseContext());
-//                               if(timeLeft == -1) {timeLeft = SharedPreferencesManager.getMinLatency(getBaseContext());}
-//                               DisableBluetoothScheduler.scheduleJob(getBaseContext(), timeLeft);
-//                               TimerNotification.startTimerNotification(getBaseContext(), timeLeft);
-//                               startTextTimer(timeLeft);
-//                           }
-//                       } else {
-//                           DisableBluetoothScheduler.stopJob(getBaseContext());
-//                           TimerNotification.stopTimerNotification(getBaseContext());
-//                           countDownTimerOnButton.cancel();
-//                           //SharedPreferencesManager.editTimeLeft(getBaseContext(), -1);
-//                           updateTextTimer(0, false);
-//                       }
-//                  // }
-//            }
-//        });
-//        updateTimerButton();
-//    }
 
     public void createSpinner() {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,  getResources().getStringArray(R.array.spinner_items));
@@ -208,13 +183,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTick(long millisUntilFinished) {
                 updateTextTimer(millisUntilFinished / 1000, true);
-//                SharedPreferencesManager.editTimeLeft(getBaseContext(), millisUntilFinished / 1000);
             }
 
             @Override
             public void onFinish() {
                 updateTextTimer(0, false);
-//                SharedPreferencesManager.editTimeLeft(getBaseContext(), -1);
             }
         }.start();
     }
